@@ -12,9 +12,9 @@ struct PostListView: View {
     
     var body: some View {
         VStack{
-            MediaPostView(post: viewModel.posts[0], likePostAction: viewModel.updatePostLike(postId:like:))
-            MediaPostView(post: viewModel.posts[1], likePostAction: viewModel.updatePostLike(postId:like:))
-            MediaPostView(post: viewModel.posts[2], likePostAction: viewModel.updatePostLike(postId:like:))
+            ForEach(viewModel.posts) { post in
+                MediaPostView(post: post, likePostAction: viewModel.updatePostLike(postId:like:))
+            }
         }
     }
 }
