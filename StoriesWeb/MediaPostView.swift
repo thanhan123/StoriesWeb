@@ -1,33 +1,48 @@
 import SwiftUI
 
+struct Post: Identifiable {
+    let id = UUID()
+    var title: String
+    var content: String
+    var like: Bool
+    var url: URL?
+ }
+
 struct MediaPostView: View {
-    @State private var isLiked = false
-    let imageURL: URL?
+    let post: Post
+    let likePostAction: ((UUID, Bool) -> Void)?
+    
+    init(post: Post, likePostAction: ((UUID, Bool) -> Void)? = nil) {
+        self.post = post
+        self.likePostAction = likePostAction
+    }
     
     var body: some View {
-        VStack(alignment: .center) {
-            AsyncImage(url: imageURL)
+        VStack {
+            AsyncImage(url: post.url) { image in
+                image.image?.resizable().aspectRatio(contentMode: .fill)
+            }
                 .frame(width: 320, height: 200)
                 .clipped()
             
             VStack(alignment: .leading, spacing: 10) {
-                Text("Post Title")
+                Text(post.title)
                     .font(.title)
                     .fontWeight(.bold)
                 
-                Text("This is a description of the media post. It can be a few lines long and provide some context to the image above.")
+                Text(post.content)
                     .font(.body)
                     .foregroundColor(.gray)
                 
                 HStack {
                     Spacer()
                     Button(action: {
-                        isLiked.toggle()
+                        likePostAction?(post.id, !post.like)
                     }) {
                         HStack {
-                            Image(systemName: isLiked ? "heart.fill" : "heart")
-                                .foregroundColor(isLiked ? .red : .gray)
-                            Text(isLiked ? "Liked" : "Like")
+                            Image(systemName: post.like ? "heart.fill" : "heart")
+                                .foregroundColor(post.like ? .red : .gray)
+                            Text(post.like ? "Liked" : "Like")
                                 .foregroundColor(.primary)
                         }
                     }
@@ -42,6 +57,6 @@ struct MediaPostView: View {
 
 struct MediaPostView_Previews: PreviewProvider {
     static var previews: some View {
-        MediaPostView(imageURL: URL(string: "https://as1.ftcdn.net/v2/jpg/06/05/54/76/1000_F_605547672_nQOyDmKUnMcwUpVDYhwM1KgUpvRxf0sR.jpg"))
+        MediaPostView(post: Post(title: "Hello world", content: "This is a super long content of a post", like: true, url: URL(string: "https://as1.ftcdn.net/v2/jpg/06/05/54/76/1000_F_605547672_nQOyDmKUnMcwUpVDYhwM1KgUpvRxf0sR.jpg")))
     }
 }
