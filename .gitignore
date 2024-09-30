@@ -6,3 +6,8 @@ Fastlane/test_output
 
 # rvm vendor
 vendor
+
+#swiftformat
+BuildTools/.build 
+BuildTools/.swiftpm
+BuildTools/Package.resolved

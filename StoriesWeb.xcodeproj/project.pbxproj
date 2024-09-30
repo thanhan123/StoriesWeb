@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB98F5E82CAAE30E00420F8E /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB98F5E72CAAE30E00420F8E /* PostList.swift */; };
+		EB98F5EB2CAAE37700420F8E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB98F5EA2CAAE37700420F8E /* Post.swift */; };
+		EB98F5ED2CAAE83800420F8E /* LikePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB98F5EC2CAAE83800420F8E /* LikePost.swift */; };
+		EB98F5EF2CAAEBE900420F8E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB98F5EE2CAAEBE900420F8E /* Constant.swift */; };
 		EBF651E82C2EB046009ECE48 /* StoriesWebApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF651E72C2EB046009ECE48 /* StoriesWebApp.swift */; };
-		EBF651EA2C2EB046009ECE48 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF651E92C2EB046009ECE48 /* ContentView.swift */; };
+		EBF651EA2C2EB046009ECE48 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF651E92C2EB046009ECE48 /* MainView.swift */; };
 		EBF651EC2C2EB047009ECE48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF651EB2C2EB047009ECE48 /* Assets.xcassets */; };
 		EBF651F02C2EB047009ECE48 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBF651EF2C2EB047009ECE48 /* Preview Assets.xcassets */; };
 		EBF651FA2C2EB048009ECE48 /* StoriesWebTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBF651F92C2EB048009ECE48 /* StoriesWebTests.swift */; };
@@ -38,9 +42,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EB98F5E72CAAE30E00420F8E /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
+		EB98F5EA2CAAE37700420F8E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		EB98F5EC2CAAE83800420F8E /* LikePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePost.swift; sourceTree = "<group>"; };
+		EB98F5EE2CAAEBE900420F8E /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		EBF651E42C2EB046009ECE48 /* StoriesWeb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StoriesWeb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF651E72C2EB046009ECE48 /* StoriesWebApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesWebApp.swift; sourceTree = "<group>"; };
-		EBF651E92C2EB046009ECE48 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EBF651E92C2EB046009ECE48 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		EBF651EB2C2EB047009ECE48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EBF651ED2C2EB047009ECE48 /* StoriesWeb.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StoriesWeb.entitlements; sourceTree = "<group>"; };
 		EBF651EF2C2EB047009ECE48 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -80,6 +88,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB98F5E52CA9496E00420F8E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EBF651E92C2EB046009ECE48 /* MainView.swift */,
+				EBF652122C2F1675009ECE48 /* MediaPostView.swift */,
+				EBF652142C2FD340009ECE48 /* TabBar.swift */,
+				EBF652162C2FDF2B009ECE48 /* PostListView.swift */,
+				EBF652182C3016D4009ECE48 /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EB98F5E62CAAE2FB00420F8E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				EB98F5E72CAAE30E00420F8E /* PostList.swift */,
+				EB98F5EC2CAAE83800420F8E /* LikePost.swift */,
+				EB98F5EE2CAAEBE900420F8E /* Constant.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		EB98F5E92CAAE34700420F8E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EB98F5EA2CAAE37700420F8E /* Post.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		EBF651DB2C2EB046009ECE48 = {
 			isa = PBXGroup;
 			children = (
@@ -103,12 +141,10 @@
 		EBF651E62C2EB046009ECE48 /* StoriesWeb */ = {
 			isa = PBXGroup;
 			children = (
+				EB98F5E92CAAE34700420F8E /* Model */,
+				EB98F5E62CAAE2FB00420F8E /* Service */,
+				EB98F5E52CA9496E00420F8E /* View */,
 				EBF651E72C2EB046009ECE48 /* StoriesWebApp.swift */,
-				EBF651E92C2EB046009ECE48 /* ContentView.swift */,
-				EBF652122C2F1675009ECE48 /* MediaPostView.swift */,
-				EBF652142C2FD340009ECE48 /* TabBar.swift */,
-				EBF652162C2FDF2B009ECE48 /* PostListView.swift */,
-				EBF652182C3016D4009ECE48 /* HomeView.swift */,
 				EBF651EB2C2EB047009ECE48 /* Assets.xcassets */,
 				EBF651ED2C2EB047009ECE48 /* StoriesWeb.entitlements */,
 				EBF651EE2C2EB047009ECE48 /* Preview Content */,
@@ -148,6 +184,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EBF652092C2EB048009ECE48 /* Build configuration list for PBXNativeTarget "StoriesWeb" */;
 			buildPhases = (
+				EB958FC52CA805EB006CBED1 /* SwiftFormat */,
 				EBF651E02C2EB046009ECE48 /* Sources */,
 				EBF651E12C2EB046009ECE48 /* Frameworks */,
 				EBF651E22C2EB046009ECE48 /* Resources */,
@@ -266,6 +303,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		EB958FC52CA805EB006CBED1 /* SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftFormat;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd BuildTools\nSDKROOT=(xcrun --sdk macosx --show-sdk-path)\n#swift package update #Uncomment this line temporarily to update the version used to the latest matching your BuildTools/Package.swift file\nswift run -c release swiftformat \"$SRCROOT\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		EBF651E02C2EB046009ECE48 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -273,8 +332,12 @@
 			files = (
 				EBF652132C2F1675009ECE48 /* MediaPostView.swift in Sources */,
 				EBF652172C2FDF2B009ECE48 /* PostListView.swift in Sources */,
-				EBF651EA2C2EB046009ECE48 /* ContentView.swift in Sources */,
+				EB98F5E82CAAE30E00420F8E /* PostList.swift in Sources */,
+				EB98F5EB2CAAE37700420F8E /* Post.swift in Sources */,
+				EBF651EA2C2EB046009ECE48 /* MainView.swift in Sources */,
+				EB98F5ED2CAAE83800420F8E /* LikePost.swift in Sources */,
 				EBF652192C3016D4009ECE48 /* HomeView.swift in Sources */,
+				EB98F5EF2CAAEBE900420F8E /* Constant.swift in Sources */,
 				EBF652152C2FD340009ECE48 /* TabBar.swift in Sources */,
 				EBF651E82C2EB046009ECE48 /* StoriesWebApp.swift in Sources */,
 			);
@@ -350,7 +413,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -411,7 +474,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
