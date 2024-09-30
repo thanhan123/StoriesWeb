@@ -9,8 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        VStack{
-            ScrollView(.vertical, showsIndicators: false){
+        VStack {
+            ScrollView(.vertical, showsIndicators: false) {
                 PostListView()
                 // To make the content can be scolled under the tabbar
                 Spacer(minLength: 120)
