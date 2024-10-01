@@ -12,8 +12,14 @@ struct PostListView: View {
 
     var body: some View {
         VStack {
-            ForEach(viewModel.posts) { post in
-                MediaPostView(post: post, likePostAction: viewModel.likePost(postId:like:))
+            ForEach(0 ..< viewModel.posts.count, id: \.self) { index in
+                MediaPostView(post: viewModel.posts[index], likePostAction: viewModel.likePost(postId:like:))
+                    .onAppear {
+                        // Trigger loading more posts when the user is 3 items from the end
+                        if index == viewModel.posts.count - 1 {
+                            viewModel.fetchPosts()
+                        }
+                    }
             }
         }.onAppear {
             viewModel.fetchPosts()
@@ -27,6 +33,7 @@ extension PostListView {
         private(set) var posts = [Post]()
         private let postListService: PostList
         private let likePostService: LikePost
+        private var latestPostId: String?
 
         init(postListService: PostList = PostListImpl(), likePostService: LikePost = LikePostImpl()) {
             self.postListService = postListService
@@ -53,7 +60,9 @@ extension PostListView {
         func fetchPosts() {
             Task {
                 do {
-                    posts = try await postListService.fetch()
+                    let postsResponse = try await postListService.fetch(fromId: latestPostId, offset: 3)
+                    latestPostId = postsResponse.last?.id
+                    posts.append(contentsOf: postsResponse)
                 } catch {
                     print("Failed to fetch posts: \(error)")
                 }
