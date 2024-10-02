@@ -11,7 +11,7 @@ struct PostListView: View {
     @State private var viewModel = PostListViewModel()
 
     var body: some View {
-        VStack {
+        LazyVStack {
             ForEach(0 ..< viewModel.posts.count, id: \.self) { index in
                 MediaPostView(post: viewModel.posts[index], likePostAction: viewModel.likePost(postId:like:))
                     .onAppear {
@@ -21,6 +21,11 @@ struct PostListView: View {
                         }
                     }
             }
+            if viewModel.isLoading {
+                ProgressView("Loading more posts...")
+                    .padding()
+            }
+
         }.onAppear {
             viewModel.fetchPosts()
         }
@@ -34,6 +39,7 @@ extension PostListView {
         private let postListService: PostList
         private let likePostService: LikePost
         private var latestPostId: String?
+        private(set) var isLoading = false
 
         init(postListService: PostList = PostListImpl(), likePostService: LikePost = LikePostImpl()) {
             self.postListService = postListService
@@ -58,14 +64,21 @@ extension PostListView {
         }
 
         func fetchPosts() {
+            if isLoading {
+                return
+            }
             Task {
+                isLoading = true
                 do {
                     let postsResponse = try await postListService.fetch(fromId: latestPostId, offset: 3)
-                    latestPostId = postsResponse.last?.id
+                    if !postsResponse.isEmpty {
+                        latestPostId = postsResponse.last?.id
+                    }
                     posts.append(contentsOf: postsResponse)
                 } catch {
                     print("Failed to fetch posts: \(error)")
                 }
+                isLoading = false
             }
         }
     }
