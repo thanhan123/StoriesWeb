@@ -14,10 +14,17 @@ struct MainView: View {
         ZStack {
             Color("background").edgesIgnoringSafeArea(.all)
 
-            if selectedViewIndex == 0 {
-                HomeView()
+            TabView {
+                HomeView().tabItem {
+                    Label("Home", systemImage: "house")
+                }
+                Text("Search").tabItem {
+                    Label("Search", systemImage: "magnifyingglass")
+                }
+                Text("Like").tabItem {
+                    Label("Like", systemImage: "heart")
+                }
             }
-            TabBar(selectedIndex: $selectedViewIndex)
         }
     }
 }
