@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PostListView: View {
     @State private var viewModel = PostListViewModel()
+    @State private var tappedPost: Post?
 
     var body: some View {
         LazyVStack {
@@ -19,6 +20,8 @@ struct PostListView: View {
                         if index == viewModel.posts.count - 1 {
                             viewModel.fetchPosts()
                         }
+                    }.onTapGesture {
+                        tappedPost = viewModel.posts[index]
                     }
             }
             if viewModel.isLoading {
@@ -28,6 +31,8 @@ struct PostListView: View {
 
         }.onAppear {
             viewModel.fetchPosts()
+        }.fullScreenCover(item: $tappedPost) { post in
+            PostViewDetail(post: post)
         }
     }
 }
