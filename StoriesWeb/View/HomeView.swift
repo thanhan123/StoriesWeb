@@ -8,14 +8,25 @@
 import SwiftUI
 
 struct HomeView: View {
+    @State private var tappedPost: Post?
+    @Namespace private var animation
+
     var body: some View {
-        VStack {
-            ScrollView(.vertical, showsIndicators: false) {
-                PostListView()
-                // To make the content can be scolled under the tabbar
-                Spacer(minLength: 120)
+        ZStack {
+            VStack {
+                ScrollView(.vertical, showsIndicators: false) {
+                    PostListView(tappedPost: $tappedPost, animation: animation)
+                    // To make the content can be scolled under the tabbar
+                    Spacer(minLength: 120)
+                }
+            }
+
+            if tappedPost != nil {
+                PostViewDetail(post: $tappedPost, likePostAction: nil, animation: animation)
+                    .transition(.opacity) // Slide in from the right
             }
         }
+        .animation(.easeInOut, value: tappedPost != nil)
     }
 }
 
