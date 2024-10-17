@@ -38,8 +38,10 @@ struct PostViewDetail: View {
                     Spacer()
                 }
                 ZStack {
-                    AsyncImage(url: post.url) { image in
-                        image.image?.resizable().aspectRatio(contentMode: .fill)
+                    AsyncCachedImage(url: post.url) { image in
+                        image.resizable().aspectRatio(contentMode: .fill)
+                    } placeholder: {
+                        ProgressView()
                     }
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 200)
                     .clipped()

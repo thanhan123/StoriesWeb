@@ -8,11 +8,13 @@ struct MediaPostView: View {
 
     var body: some View {
         VStack {
-            AsyncImage(url: post.url) { image in
-                image.image?.resizable().aspectRatio(contentMode: .fill)
+            AsyncCachedImage(url: post.url) { image in
+                image.resizable().aspectRatio(contentMode: .fill)
                     .matchedGeometryEffect(id: post.id, in: animation, isSource: isAnimationSource)
                     .frame(width: 320, height: 200)
                     .clipped()
+            } placeholder: {
+                ProgressView()
             }
 
             VStack(alignment: .leading, spacing: 10) {

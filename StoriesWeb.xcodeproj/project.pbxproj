@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB96538F2CC151CD006A37B6 /* AsyncCachedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB96538E2CC151CD006A37B6 /* AsyncCachedImage.swift */; };
 		EB98F5E82CAAE30E00420F8E /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB98F5E72CAAE30E00420F8E /* PostList.swift */; };
 		EB98F5EB2CAAE37700420F8E /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB98F5EA2CAAE37700420F8E /* Post.swift */; };
 		EB98F5ED2CAAE83800420F8E /* LikePost.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB98F5EC2CAAE83800420F8E /* LikePost.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EB96538E2CC151CD006A37B6 /* AsyncCachedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncCachedImage.swift; sourceTree = "<group>"; };
 		EB98F5E72CAAE30E00420F8E /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
 		EB98F5EA2CAAE37700420F8E /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		EB98F5EC2CAAE83800420F8E /* LikePost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikePost.swift; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB96538D2CC151BA006A37B6 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				EB96538E2CC151CD006A37B6 /* AsyncCachedImage.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		EB98F5E52CA9496E00420F8E /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +151,7 @@
 		EBF651E62C2EB046009ECE48 /* StoriesWeb */ = {
 			isa = PBXGroup;
 			children = (
+				EB96538D2CC151BA006A37B6 /* Util */,
 				EB98F5E92CAAE34700420F8E /* Model */,
 				EB98F5E62CAAE2FB00420F8E /* Service */,
 				EB98F5E52CA9496E00420F8E /* View */,
@@ -332,6 +343,7 @@
 			files = (
 				EBF652132C2F1675009ECE48 /* MediaPostView.swift in Sources */,
 				EBF652172C2FDF2B009ECE48 /* PostListView.swift in Sources */,
+				EB96538F2CC151CD006A37B6 /* AsyncCachedImage.swift in Sources */,
 				EB98F5E82CAAE30E00420F8E /* PostList.swift in Sources */,
 				EB98F5EB2CAAE37700420F8E /* Post.swift in Sources */,
 				EBF651EA2C2EB046009ECE48 /* MainView.swift in Sources */,
