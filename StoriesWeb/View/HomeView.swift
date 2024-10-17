@@ -13,13 +13,7 @@ struct HomeView: View {
 
     var body: some View {
         ZStack {
-            VStack {
-                ScrollView(.vertical, showsIndicators: false) {
-                    PostListView(tappedPost: $tappedPost, animation: animation)
-                    // To make the content can be scolled under the tabbar
-                    Spacer(minLength: 120)
-                }
-            }
+            PostListView(tappedPost: $tappedPost, animation: animation)
 
             if tappedPost != nil {
                 PostViewDetail(post: $tappedPost, likePostAction: nil, animation: animation)

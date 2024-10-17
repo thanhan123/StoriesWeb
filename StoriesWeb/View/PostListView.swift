@@ -13,29 +13,29 @@ struct PostListView: View {
     var animation: Namespace.ID
 
     var body: some View {
-        ZStack {
-            LazyVStack {
-                ForEach(0 ..< viewModel.posts.count, id: \.self) { index in
-                    MediaPostView(post: viewModel.posts[index], likePostAction: viewModel.likePost(postId:like:), animation: animation, isAnimationSource: tappedPost?.id != viewModel.posts[index].id)
-                        .onAppear {
-                            // Trigger loading more posts when the user is 3 items from the end
-                            if index == viewModel.posts.count - 1 {
-                                viewModel.fetchPosts()
-                            }
-                        }.onTapGesture {
-                            withAnimation(.easeInOut) {
-                                tappedPost = viewModel.posts[index]
-                            }
+        List {
+            ForEach(0 ..< viewModel.posts.count, id: \.self) { index in
+                MediaPostView(post: viewModel.posts[index], likePostAction: viewModel.likePost(postId:like:), animation: animation, isAnimationSource: tappedPost?.id != viewModel.posts[index].id)
+                    .listRowSeparator(.hidden)
+                    .onAppear {
+                        // Trigger loading more posts when the user is 3 items from the end
+                        if index == viewModel.posts.count - 1 {
+                            viewModel.fetchPosts()
                         }
-                }
-                if viewModel.isLoading {
-                    ProgressView("Loading more posts...")
-                        .padding()
-                }
-
-            }.onAppear {
-                viewModel.fetchPosts()
+                    }.onTapGesture {
+                        withAnimation(.easeInOut) {
+                            tappedPost = viewModel.posts[index]
+                        }
+                    }
             }
+            if viewModel.isLoading {
+                ProgressView("Loading more posts...")
+                    .padding()
+            }
+        }
+        .listStyle(.plain)
+        .onAppear {
+            viewModel.fetchPosts()
         }
     }
 }
