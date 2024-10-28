@@ -10,29 +10,34 @@ import SwiftUI
 struct PostListView: View {
     @State private var viewModel = PostListViewModel()
     @Binding var tappedPost: Post?
+    @State private var searchText: String = ""
+    @Namespace private var headerAnimation
     var animation: Namespace.ID
 
     var body: some View {
         List {
-            ForEach(0 ..< viewModel.posts.count, id: \.self) { index in
-                MediaPostView(post: viewModel.posts[index], likePostAction: viewModel.likePost(postId:like:), animation: animation, isAnimationSource: tappedPost?.id != viewModel.posts[index].id)
-                    .listRowSeparator(.hidden)
-                    .onAppear {
-                        // Trigger loading more posts when the user is 3 items from the end
-                        if index == viewModel.posts.count - 1 {
-                            viewModel.fetchPosts()
+            Section(header: Header(searchText: $searchText)) {
+                ForEach(0 ..< viewModel.posts.count, id: \.self) { index in
+                    MediaPostView(post: viewModel.posts[index], likePostAction: viewModel.likePost(postId:like:), animation: animation, isAnimationSource: tappedPost?.id != viewModel.posts[index].id)
+                        .listRowSeparator(.hidden)
+                        .onAppear {
+                            // Trigger loading more posts when the user is 3 items from the end
+                            if index == viewModel.posts.count - 1 {
+                                viewModel.fetchPosts()
+                            }
+                        }.onTapGesture {
+                            withAnimation(.easeInOut) {
+                                tappedPost = viewModel.posts[index]
+                            }
                         }
-                    }.onTapGesture {
-                        withAnimation(.easeInOut) {
-                            tappedPost = viewModel.posts[index]
-                        }
-                    }
-            }
-            if viewModel.isLoading {
-                ProgressView("Loading more posts...")
-                    .padding()
+                }
+                if viewModel.isLoading {
+                    ProgressView("Loading more posts...")
+                        .padding()
+                }
             }
         }
+        .ignoresSafeArea()
         .listStyle(.plain)
         .onAppear {
             viewModel.fetchPosts()
