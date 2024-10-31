@@ -11,7 +11,7 @@ struct MediaPostView: View {
             AsyncCachedImage(url: post.url) { image in
                 image.resizable().aspectRatio(contentMode: .fill)
                     .matchedGeometryEffect(id: post.id, in: animation, isSource: isAnimationSource)
-                    .frame(width: 320, height: 200)
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .center)
                     .clipped()
             } placeholder: {
                 ProgressView()
@@ -43,7 +43,7 @@ struct MediaPostView: View {
             }
         }
         .shadow(radius: 5)
-        .padding(.horizontal)
+        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
     }
 }
 
